@@ -12,7 +12,6 @@ phantom.onError = function(msg, trace) {
 }
 
 var url = 'https://losangeles.ucbtrainingcenter.com/course/open';
-url = 'http://localhost:3000/test';
 
 page.open(url, function(status) {
   if (status !== 'success') {

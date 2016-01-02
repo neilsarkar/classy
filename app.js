@@ -1,10 +1,10 @@
-var express = require('express');
-var app = express();
+var parser       = require('./parser.js');
+var load_html    = require('./load_html.js');
 
-app.get('/test', function(req, res) {
-  res.sendFile(__dirname + '/test.html');
-})
+console.log("Loading page...");
+load_html(function(err, html) {
+  if( err ) { return console.error(err); }
+  var classes = parser.parseClasses(html);
 
-app.listen(3000, function(err) {
-  if( err ) { throw err; }
+  console.log(classes);
 })
