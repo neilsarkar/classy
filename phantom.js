@@ -2,12 +2,12 @@ var page = require('webpage').create();
 var moment = require('moment');
 
 page.onError = function(msg, trace) {
-  throw "Page error " + msg;
+  console.error(msg, trace);
   phantom.exit();
 }
 
 phantom.onError = function(msg, trace) {
-  throw "Phantom error " + msg;
+  console.error(msg, trace);
   phantom.exit();
 }
 
@@ -19,24 +19,10 @@ page.open(url, function(status) {
     return console.error('Unable to access network');
   }
 
-  var classes = page.evaluate(function(s) {
-    // http://stackoverflow.com/questions/13944518/how-to-scrape-links-with-phantomjs
-    return [].map.call(document.querySelectorAll(s), function(el) {
-      return {
-        level: el.querySelector('td.widget-text').innerHTML.trim(),
-        time: el.querySelector('td:nth-child(2)').innerHTML.trim(),
-        start_date: el.querySelector('td:nth-child(3)').innerHTML.trim(),
-        teacher: el.querySelector('td:nth-child(4)').innerHTML.trim(),
-        sold_out: !!el.querySelector('a.btn-danger'),
-        registration_link: el.querySelector('a').href
-      }
-    });
-  }, '.panel-group:nth-child(4) > .panel table tbody tr');
+  var html = page.evaluate(function() {
+    return document.body.innerHTML;
+  });
 
-  classes.forEach(function(c) {
-    c.start_date = moment(c.start_date, 'MMM Do, YYYY, hh:mma')._d;
-    console.log(JSON.stringify(c));
-  })
-
+  console.log(html);
   phantom.exit();
 });
