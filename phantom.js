@@ -1,4 +1,5 @@
 var page = require('webpage').create();
+var moment = require('moment');
 
 page.onError = function(msg, trace) {
   throw "Page error " + msg;
@@ -18,7 +19,8 @@ page.open(url, function(status) {
     return console.error('Unable to access network');
   }
 
-  var elements = page.evaluate(function(s) {
+  var classes = page.evaluate(function(s) {
+    // http://stackoverflow.com/questions/13944518/how-to-scrape-links-with-phantomjs
     return [].map.call(document.querySelectorAll(s), function(el) {
       return {
         level: el.querySelector('td.widget-text').innerHTML.trim(),
@@ -31,9 +33,10 @@ page.open(url, function(status) {
     });
   }, '.panel-group:nth-child(4) > .panel table tbody tr');
 
-  for( var i = 0; i < elements.length; i++ ) {
-    console.log(JSON.stringify(elements[i]));
-  }
+  classes.forEach(function(c) {
+    c.start_date = moment(c.start_date, 'MMM Do, YYYY, hh:mma')._d;
+    console.log(JSON.stringify(c));
+  })
 
   phantom.exit();
 });

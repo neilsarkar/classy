@@ -10,6 +10,7 @@
   "license": "BSD-2-Clause",
   "dependencies": {
     "express": "~4.13.3",
-    "phantomjs": "~1.9.19"
+    "phantomjs": "~1.9.19",
+    "moment": "~2.10.6"
   }
 }
