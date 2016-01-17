@@ -1,0 +1,8 @@
+app:
+  build: './app'
+  volumes:
+    - ./app:/src
+  links:
+    - mongo
+mongo:
+  image: mongo

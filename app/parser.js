@@ -9,12 +9,14 @@ module.exports.parseClasses = function parseClasses(html) {
 
   var classes = rows.map(function(_, r) {
     r = $(r);
+    var link = queries.registration_link(r).attr('href');
     return {
       time             : queries.time(r),
       teacher          : queries.teacher(r),
       start_date       : moment(queries.start_date(r), 'MMM Do, YYYY, hh:mma')._d,
       sold_out         : !!queries.sold_out_button(r).length,
-      registration_link: queries.registration_link(r).attr('href')
+      registration_link: link,
+      id               : link.split('/').slice(-1)[0]
     }
   }).toArray();
 
