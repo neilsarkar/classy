@@ -1,6 +1,6 @@
 var nodemailer = require('nodemailer');
 var auth       = require('./email_auth');
-var lodash     = require('lodash');
+var _          = require('lodash');
 
 // create reusable transporter object using SMTP transport
 var transporter = nodemailer.createTransport({
@@ -10,7 +10,7 @@ var transporter = nodemailer.createTransport({
 
 var defaultOptions = {
   from: auth.user,
-  subject: 'Hello World',
+  subject: 'New UCB Classes Posted',
   text: 'Hi',
   to: 'nobody@gmail.com'
 }
