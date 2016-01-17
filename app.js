@@ -1,7 +1,7 @@
-var parser       = require('./parser.js');
-var load_html    = require('./load_html.js');
 var moment       = require('moment');
-var notifier     = require('./notifier.js')
+var parser       = require('./lib/parser.js');
+var load_html    = require('./lib/load_html.js');
+var notifier     = require('./lib/notifier.js')
 
 console.log("Loading page...");
 load_html(function(err, html) {

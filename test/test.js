@@ -1,6 +1,6 @@
 var should = require('should');
 var fs      = require('fs');
-var parser  = require('../parser');
+var parser  = require('../lib/parser');
 var cheerio = require('cheerio');
 
 // verify that we get back the right data from the test DOM
@@ -17,7 +17,7 @@ describe('parser', function() {
 
   it('is up to date with the live page', function(done) {
     this.timeout(15000);
-    var load_html = require('../load_html');
+    var load_html = require('../lib/load_html');
     load_html(function(err, html) {
       if( err ) { throw err; }
 
