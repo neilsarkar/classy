@@ -4,7 +4,7 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "test": "node test/test.js"
+    "test": "node_modules/mocha/bin/mocha"
   },
   "author": "",
   "license": "BSD-2-Clause",
@@ -17,6 +17,7 @@
     "lodash": "~4.0.0"
   },
   "devDependencies": {
-    "should": "~8.0.2"
+    "should": "~8.0.2",
+    "mocha": "~2.3.4"
   }
 }
