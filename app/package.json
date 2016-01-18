@@ -16,7 +16,8 @@
     "nodemailer": "~2.0.0",
     "lodash": "~4.0.0",
     "mongodb": "~2.1.4",
-    "async": "~1.5.2"
+    "async": "~1.5.2",
+    "debug": "~2.2.0"
   },
   "devDependencies": {
     "should": "~8.0.2",
