@@ -1,6 +1,9 @@
 var nodemailer = require('nodemailer');
 var auth       = require('./email_auth');
+var debug      = require('debug')('classy');
 var _          = require('lodash');
+
+debug('Using auth', auth);
 
 // create reusable transporter object using SMTP transport
 var transporter = nodemailer.createTransport({
