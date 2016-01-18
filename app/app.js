@@ -13,6 +13,11 @@ client.connect('mongodb://mongo/classy', function(err, db) {
   if( err ) { console.error("Unable to connect to mongodb"); throw err; }
 
   collection = db.collection('classes');
+  run();
+  setInterval(run, 1000 * 60);
+});
+
+function run() {
   debug('Loading page...');
   async.waterfall([
     load_html,
@@ -23,9 +28,8 @@ client.connect('mongodb://mongo/classy', function(err, db) {
   ], function(err, ok) {
     if( err ) { console.error(err); }
     else      { console.log("OK"); }
-    db.close();
   })
-});
+}
 
 function parseClasses(html, cb) {
   var classes = parser.parseClasses(html);
