@@ -16,3 +16,7 @@ Delivers updates for ucb classes.
 
     $ npm install -g mocha
     $ mocha .
+
+## Deploy
+
+    $ rsync --exclude '.git' --exclude 'node_modules' -avz "./" "neilsarkar@104.236.42.174":/home/neilsarkar/app/
