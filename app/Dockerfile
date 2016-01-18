@@ -4,4 +4,4 @@ WORKDIR /src
 
 VOLUME ["/src"]
 
-CMD ["node", "poop.js"]
+CMD ["./run_forever.sh"]
